@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import App from '@/preview/App';
+
+
 Vue.use(Router)
 
 
@@ -15,11 +17,6 @@ export default new Router({
       path: '/customTheme',
       name: 'customTheme',
       component: customTheme
-    },
-    {
-      path: '/demo',
-      name: 'demo',
-      component: r => require.ensure([], () => r(require('../../docs/demo.md')))
     },
     {
       path: '/Button',
