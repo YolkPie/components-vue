@@ -59,11 +59,6 @@ const webpackConfig = merge(baseWebpackConfig, {
         from: `./src/components`,
         to: `./lib`,
         ignore: ['.*']
-      },
-      {
-        from: `./npm-deploy-file`,
-        to: `./`,
-        ignore: ['.*']
       }
     ])
   ]
