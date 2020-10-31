@@ -1,58 +1,37 @@
 <template>
-  <button class="ml-button" :class="btnClass">
-    <slot></slot>
+  <button :class="['button', { disabled } ]" :style="customStyle" @click="clickHandler">
+    <slot />
+    <slot name="desc" />
+    <div v-if="loading" class="button__loading" />
   </button>
 </template>
 
 <script>
-const prefix = "ml-button";
 export default {
-  name: "MlButton",
+  name: "mi-vant-button",
   props: {
-    type: {
-      type: String,
-      default: "primary"
+    loading: {
+      type: Boolean,
+      default: false
     },
     disabled: {
       type: Boolean,
       default: false
     },
-    round: {
-      type: Boolean,
-      default: false
+    customStyle: {
+      type: Object,
+      default: () => ({})
     }
   },
-  computed: {
-    btnClass() {
-      return [
-        `${prefix}--${this.type}`,
-        this.disabled ? `${prefix}--disabled` : "",
-        this.round ? `${prefix}--round` : ""
-      ];
+  methods: {
+    clickHandler() {
+      if (this.disabled) return;
+      this.$emit("click");
     }
   }
 };
 </script>
 
-<style lang="scss">
-@import "../../styles/variables/index";
-.ml-button {
-  color: white;
-  font-size: 14px;
-  padding: 12px 20px;
-  border-radius: 5px;
-  &:focus {
-    cursor: pointer;
-  }
-  &--primary {
-    background-color: $color-primary;
-  }
-  &--disabled {
-    background-color: $color_disabled;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  &--round {
-    border-radius: 20px;
-  }
-}
+<style lang="less">
+@import "./style/index.less";
 </style>

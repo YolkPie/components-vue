@@ -1,16 +1,44 @@
-const path = require("path");
+// 自定义webpack配置
+const path = require('path');
 
-module.exports = async ({ config, mode }) => {
+
+module.exports = async ({ config, env }) => {
+
+  // Extend it as you need.
+  function resolve(dir) {
+    return path.join(__dirname, '..', dir);
+  }
+
+  config.resolve = {
+    extensions: ['.js', '.vue', '.json', '.jsx'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src')
+    },
+  }
   config.module.rules.push({
-    test: /\.scss$/,
-    use: ["vue-style-loader", "css-loader", "sass-loader"],
-    include: path.resolve(__dirname, "../")
+    test: /\.stories.jsx?$/,
+    loaders: [require.resolve('@storybook/addon-storysource/loader')],
+    enforce: 'pre',
   });
-  config.module.rules.push({
-    test: /\.story\.js?$/,
-    loaders: [require.resolve("@storybook/addon-storysource/loader")],
-    enforce: "pre"
-  });
-  // Return the altered config
+  config.module.rules.push(
+    {
+      test: /\.(css|less)$/,
+      use: [{
+        loader: 'style-loader', // creates style nodes from JS strings
+      }, {
+        loader: 'css-loader',// translates CSS into CommonJS
+      },
+      { loader: 'postcss-loader' },
+      {
+        loader: 'less-loader',
+        options: {
+          javascriptEnabled: true
+        } // compiles Less to CSS
+      }],
+      exclude: /node_modules/
+    })
+
+
   return config;
 };

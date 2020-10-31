@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@vue/babel-preset-app",
+    [
+      "@vue/babel-preset-jsx",
+      {
+        "functional": false
+      }
+    ]
+  ]
+}
