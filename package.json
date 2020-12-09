@@ -10,13 +10,12 @@
     "build-storybook": "build-storybook",
     "bundle-report": "webpack-bundle-analyzer --port 8123 dist/stats.json",
     "build-doc": "node build-doc/build-doc.js",
-    "build": "node build/build.js",
     "clean": "rimraf rollupDist",
     "rollup": "cross-env NODE_ENV=production rollup --config=rollup.config.prod.js",
     "docsify": "docsify serve ./docsify",
     "deploy": "sh deploy.sh",
     "deploy-storybook": "sh deploy-storybook.sh",
-    "publish": "set NODE_ENV=production && node bin/publish.js",
+    "publish": "node build/build.js",
     "link": "set NODE_ENV=production && node bin/link.js"
   },
   "repository": {
@@ -43,7 +42,6 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
-    "@7fresh/rollup-plugin-postcss": "^2.0.5",
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.5.5",

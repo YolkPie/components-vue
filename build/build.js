@@ -26,7 +26,7 @@ commander.version('0.0.1', '-v, --version').parse(process.argv)
     }).run()
     await shell.rm('-rf', 'dist') //删除dist
 
-    console.log(chalk.cyan('开始编译线上' + env + '环境\n'))
+    console.log(chalk.cyan('开始编译' + env + '环境\n'))
 
     rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       if (err) throw err
