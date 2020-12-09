@@ -2,13 +2,21 @@ import MiButton from './Button/index'
 import Modal from './Modal/index'
 import Input from './Input/index.vue'
 import Textarea from './Input/textarea.vue'
+import FollowStatusBar from './Follow/StatusBar/StatusBar.vue'
+import FollowProductItem from './Follow/ProductItem/ProductItem.vue'
+import FollowShopItem from './Follow/ShopItem/ShopItem.vue'
+import FollowAlbumItem from './Follow/AlbumItem/AlbumItem.vue'
 
 
 const components = [
   MiButton,
   Modal,
   Input,
-  Textarea
+  Textarea,
+  FollowStatusBar,
+  FollowProductItem,
+  FollowShopItem,
+  FollowAlbumItem
 ]
 
 const version = '1.0.0'
@@ -31,6 +39,10 @@ export {
   Modal,
   Input,
   Textarea,
+  FollowStatusBar,
+  FollowProductItem,
+  FollowShopItem,
+  FollowAlbumItem,
   install
 }
 
