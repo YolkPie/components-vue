@@ -6,7 +6,6 @@ cache:
     - node_modules
 before_install:
     - npm config set registry http://registry.m.jd.com
-    - npm use jd
 install:
   - npm install
 script:
