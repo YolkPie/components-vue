@@ -1,5 +1,9 @@
 <template>
-  <button :class="['button', { disabled } ]" :style="customStyle" @click="clickHandler">
+  <button
+    :class="['button', { disabled } ]"
+    :style="customStyle"
+    @click="clickHandler"
+  >
     <slot />
     <slot name="desc" />
     <div v-if="loading" class="button__loading" />

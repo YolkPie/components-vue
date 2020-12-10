@@ -18,6 +18,7 @@ after_success:
   - cp -rf storybook-static/* "${GH_DIR}"
   - cd ./yolkpie.github.io
   - git add .
+  - git status
   - git commit -m 'travis-ci auto build components-vue'
   - git push origin "${P_BRANCH}"
 branches:
