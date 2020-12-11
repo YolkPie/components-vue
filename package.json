@@ -15,7 +15,7 @@
     "docsify": "docsify serve ./docsify",
     "deploy": "sh deploy.sh",
     "deploy-storybook": "sh deploy-storybook.sh",
-    "publish": "node build/build.js",
+    "publish": "set NODE_ENV=production && node bin/publish.js",
     "link": "set NODE_ENV=production && node bin/link.js"
   },
   "repository": {
