@@ -23,7 +23,7 @@ storiesOf("Follow", module)
             paimaiId: 157475120,
             image:
               "jfs/t1/149696/10/11483/72530/5f8f8eecE453a2497/aa3859c29d07b968.jpg",
-            title: "测试拍品--paimaitest创建升价拍不延时商品",
+            title: "测试拍品",
             startTime: 1606829123000,
             endTime: 1606829423000,
             currentPrice: 1,
