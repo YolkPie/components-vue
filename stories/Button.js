@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { withKnobs } from '@storybook/addon-knobs';
-import miVantButton from '../src/components/Button/Button.vue'
+import miVantButton from '../src/components/miVantButton/Button.vue'
 import { withStorySource } from '@storybook/addon-storysource'
 
 const simpleSourceCode = '<mi-vant-button>storyBook</mi-vant-button>'

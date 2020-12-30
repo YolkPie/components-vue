@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import miVantButton from '../src/components/Button/Button.vue'
+import miVantButton from '../src/components/miVantButton/Button.vue'
 import { withKnobs, text } from '@storybook/addon-knobs'
 
 

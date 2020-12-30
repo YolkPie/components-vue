@@ -23,7 +23,7 @@ module.exports = async ({ config, env }) => {
   });
   config.module.rules.push(
     {
-      test: /\.(css|less)$/,
+      test: /\.(css|less|scss)$/,
       use: [{
         loader: 'style-loader', // creates style nodes from JS strings
       }, {
