@@ -24,6 +24,7 @@ after_success:
   - git push origin `git subtree split --prefix=storybook-static master`:gh-pages --force
 
   - cd ../
+  - rm -rf components-vue
   - git clone "https://${U_NAME2}:${CO_TOKEN}@e.coding.net/yolkpie/components/components-vue.git"
   - if [! -d components-vue/storybook-static]; then
   - mkdir components-vue/storybook-static
