@@ -25,7 +25,7 @@ after_success:
 
   - cd ../
   - git clone "https://${U_NAME2}:${CO_TOKEN}@e.coding.net/yolkpie/components/components-vue.git"
-  - if [! -d components/storybook-static]; then
+  - if [! -d components-vue/storybook-static]; then
   - mkdir components-vue/storybook-static
   - fi
   - cp -rf storybook-static/* components-vue/storybook-static
