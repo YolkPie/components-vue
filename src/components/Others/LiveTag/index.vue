@@ -1,0 +1,84 @@
+<template>
+  <div class="tag-container">
+    <span :class="'tag-txt-box tag-' + liveData.code">
+      <span class="tag-txt">{{liveData.label}}</span>
+    </span>
+    <template v-if="liveData.subLabel">
+      <span class="tag-sub">{{liveData.subLabel}}人</span>
+    </template>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'LiveTag',
+    data: function () {
+      return {
+      }
+    },
+    props: {
+      liveData: {
+        type: Object,
+        default: {}
+      }
+    },
+    mounted() {
+    },
+    methods: {
+      
+    }
+  }
+</script>
+<style lang="scss" scoped>
+.tag-container {
+  border-radius: 6px;
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+}
+.tag-preplay {
+  background-image: linear-gradient(#19b45e, #009b46);
+}
+.tag-playing {
+  background-image: linear-gradient(#f2140c, #f2270c, #f24d0c);
+}
+.tag-replay {
+  background-image: linear-gradient(#9c9c9c, #9c9c9c);
+}
+.tag-will {
+  background-image: linear-gradient(#19b45e, #009b46);
+}
+.tag-txt-box {
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 6px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+.tag-txt {
+  margin: 0px;
+  padding: 0px;
+  color: #fff;
+  font-size: 24px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+}
+
+.tag-sub {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 6px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
+  padding: 0 6px 0 12px;
+  margin-left: -7px;
+  z-index: 0;
+}
+</style>
