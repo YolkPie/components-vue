@@ -3,7 +3,7 @@
 > 打造一个内部的组件库，在我们进行代码的重构，以及开发新的功能的时候，抽离公共的组件，减少代码的复用，注重业务与组件的分离，简化耦合度，便于开发与维护。
 
 ### 安装之前
-若是你在https://github.com/YolkPie/components-vue看到这个文档，就要注意你来的地方对不对啦！不要在直接https://github.com/YolkPie/components-vue更新代码，请移驾到https://git.jd.com/auction-fe/components-vue，开始你的组件封装吧~~   
+若是你在 https://github.com/YolkPie/components-vue 上看到这个文档，就要**注意**下你来的地方对不对啦！不要在直接 https://github.com/YolkPie/components-vue 更新代码，请移驾到 **https://git.xx.com/auction-fe/components-vue** （内部git组件库），开始你的组件封装吧~~   
 
 该项目使用了[travis-ci](https://travis-ci.org/)进行了[预览页面](https://yolkpie.github.io/components-vue/)的自动构建，因此代码需要同步到[github](https://github.com/YolkPie/components-vue)。
 
@@ -11,7 +11,7 @@
 
 > git remote add github https://github.com/YolkPie/components-vue.git
 
-当<b>master分支更新</b>之后，在执行了`git push`将代码推送到git.jd.com之后，再执行`git push github`将更新同步给github，接下来travis会自动构建预览页。
+当<b>master分支更新</b>之后，在执行了`git push`将代码推送到git.xxx.com（内部git组件库）之后，再执行`git push github`将更新同步给github，接下来travis会自动构建预览页。
 
 > 预览页地址：https://yolkpie.github.io/components-vue/
 
