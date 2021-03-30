@@ -9,11 +9,18 @@ storiesOf("基础组件|Steps", module)
 			components: { YolkSteps },
       data() {
 				return {
-					steps: ['步骤1', '步骤2', '完成'],
+					steps: [ '步骤1', '步骤2','完成'],
+					activeIndex: 1
 				};
 			},
       template: `
-        <YolkSteps :text="steps" :activeStatu="1"></YolkSteps>
+        <YolkSteps :steps="steps" :activeIndex="activeIndex" @stepClick="onStepClick"></YolkSteps>
         `,
+			methods:{
+				onStepClick(step, index){
+					this.activeIndex = index
+					console.log(step, index)
+				}
+			}
 		}
 	})

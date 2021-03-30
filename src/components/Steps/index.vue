@@ -1,17 +1,19 @@
 <template>
-  <div class="yk-step" v-if="dataList">
-    <div class="yk-step-list">
-      <div class="step-list-item" v-for="(item,m) in dataList" :key="m" :class="{'is-active':item.active}">
-        <span class="item-text-icon">
-          {{m+1}}
-        </span>
-        <span class="item-text-content">
-          {{item.text}}
-        </span>
-        <span class="item-text-direction" v-if="m<=1">
-          <i class="icon-arrow-right"></i>
-        </span>
-      </div>
+  <div class="yk-step" v-if="steps && steps.length">
+    <div class="step-list-item" 
+      v-for="(step,index) in steps" 
+      :key="index" 
+      :class="{'is-active':index <= activeIndex}"
+      @click="onStepClick(step, index)">
+      <span class="item-text-icon">
+        {{index + 1}}
+      </span>
+      <span class="item-text-content">
+        {{step}}
+      </span>
+      <span class="item-text-direction" v-if="index < steps.length-1">
+        <i class="icon-arrow-right"></i>
+      </span>
     </div>
   </div>
 </template>
@@ -20,89 +22,31 @@
     name: 'Steps',
     data: function () {
       return {
-        dataList: [],
+        curIndex: 0,
       }
     },
     props: {
-      text: {
+      steps: {
         type: Array,
         default: []
       },
-      activeStatu: {
+      activeIndex: {
         type: Number,
         default: 0
       }
     },
-    watch: {
-      activeStatu: function (val, oldVal) {
-        this.$nextTick(() => {
-          if (val !== oldVal) {
-            this.activeStatu = val;
-            this.checkActive();
-          }
-        });
+    watch:{
+      activeIndex(newValue, oldValue){
+        this.curIndex = newValue;
       }
     },
     mounted() {
-      //检查状态
-      this.checkActive();
+      this.curIndex = this.activeIndex
     },
     methods: {
-      checkActive() {
-        var that = this;
-        that.dataList = [];
-        this.text.forEach(function (e, i) {
-          switch (that.activeStatu) {
-            case 1:
-              if (i <= 0) {
-                that.dataList.push({
-                  text: e,
-                  active: true
-                })
-              } else {
-                that.dataList.push({
-                  text: e,
-                  active: false
-                })
-              }
-              break;
-            case 2:
-              if (i <= 1) {
-                that.dataList.push({
-                  text: e,
-                  active: true
-                })
-              } else {
-                that.dataList.push({
-                  text: e,
-                  active: false
-                })
-              }
-              break;
-            case 3:
-              that.dataList.push(
-                {
-                  text: e,
-                  active: true
-                }
-              )
-              break;
-            default:
-              that.dataList.push({
-                text: e,
-                active: false
-              })
-
-          }
-          if (that.activeStatu === 1) {
-
-
-          } else if (that.activeStatu === 2) {
-
-          } else if (that.activeStatu === 3) {
-
-          }
-        })
+      onStepClick(step, index){
+        if(index > this.curIndex) return;
+        this.$emit("stepClick", step, index)
       }
     }
   }
@@ -113,44 +57,42 @@
     padding-right: 0;
     height: 32px;
     line-height: 1.2;
-    .yk-step-list {
-      height: 32px;
-      line-height: 1.2;
-      .step-list-item {
-        font-family: PingFangSC-Regular;
-        font-size: 28px;
-        margin-left: 20px;
-        float: left;
-        letter-spacing: 0;
-        color: #9CA7B6;
-        .item-text-icon {
-          display: inline-block;
-          width: 32px;
-          height: 32px;
-          color: #fff;
-          text-align: center;
-          background-color: #9CA7B6;
-          border-radius: 100%;
-        }
-        & > .item-text-direction {
-          margin-left: 20px;
-        }
-        & > .item-text-direction  .icon-arrow-right {
-          font-weight: 600;
-          line-height: 1.3;
-          &:before{content: ">";}
-        }
+    display: flex;
+    .step-list-item {
+      flex:1;
+      font-family: PingFangSC-Regular;
+      font-size: 28px;
+      margin-left: 20px;
+      float: left;
+      letter-spacing: 0;
+      color: #9CA7B6;
+      .item-text-icon {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        color: #fff;
+        text-align: center;
+        background-color: #9CA7B6;
+        border-radius: 100%;
       }
-      .is-active {
+      & > .item-text-direction {
+        margin-left: 20px;
+      }
+      & > .item-text-direction  .icon-arrow-right {
+        font-weight: 600;
+        line-height: 1.3;
+        &:before{content: ">";}
+      }
+    }
+    .is-active {
+      color: #3399FF;
+      & > .item-text-icon {
+        background-color: #3399FF;
+        
+      }
+      & > .item-text-direction .icon-arrow-right {
         color: #3399FF;
-        & > .item-text-icon {
-          background-color: #3399FF;
-          
-        }
-        & > .item-text-direction .icon-arrow-right {
-          color: #3399FF;
-          
-        }
+        
       }
     }
   }

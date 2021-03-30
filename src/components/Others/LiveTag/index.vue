@@ -1,10 +1,13 @@
 <template>
   <div class="tag-container">
-    <span :class="'tag-txt-box tag-' + liveData.code">
-      <span class="tag-txt">{{liveData.label}}</span>
+    <span :class="'tag-txt-box tag-' + curLiveData.code">
+      <span class="tag-txt">{{curLiveData.label}}</span>
     </span>
-    <template v-if="liveData.subLabel">
-      <span class="tag-sub">{{liveData.subLabel}}人</span>
+    <template v-if="timeCounter">
+      <span class="tag-sub">{{timeCounter}}</span>
+    </template>
+    <template v-else-if="curLiveData.viewNum">
+      <span class="tag-sub">{{curLiveData.viewNum}}人</span>
     </template>
   </div>
 </template>
@@ -12,20 +15,66 @@
 <script>
   export default {
     name: 'LiveTag',
-    data: function () {
+    data() {
       return {
+        timeInterVal: null,
+        timeCounter: null,
+        curLiveData: {}
       }
     },
     props: {
-      liveData: {
-        type: Object,
-        default: {}
-      }
+      liveList: {
+        type: Array,
+        default: []
+      },
+      liveValue: Number
     },
     mounted() {
+      this.curLiveData = this.liveList.find(item => item.value === this.liveValue) || {}
+      if(this.curLiveData.startTime > 0){
+        let leftTime = this.curLiveData.startTime - Date.now()
+        this.timeCounter = this.formatStartTime(leftTime);
+        this.timeInterVal && clearInterval(this.timeInterVal)
+        this.timeInterVal = setInterval(() => {
+          leftTime -= 1000;
+          if(leftTime <= 0){
+            clearInterval(this.timeInterVal)
+            this.$emit('countEnd')
+            return;
+          }
+          this.timeCounter = this.formatStartTime(leftTime);
+        }, 1000)
+      }
+    },
+    destroyed(){
+      this.timeInterVal && clearInterval(this.timeInterVal)
     },
     methods: {
-      
+      formatStartTime(leftTime){
+        let seconds = leftTime / 1000;
+        let days = 0;
+        let hours = 0;
+        let min = 0;
+        let sec = 0;
+        if (seconds >= 86400) {
+          days = Math.floor(seconds / 86400);
+          seconds -= days * 86400;
+        }
+        if (seconds >= 3600) {
+          hours = Math.floor(seconds / 3600);
+          seconds -= hours * 3600;
+        }
+        if (seconds >= 60) {
+          min = Math.floor(seconds / 60);
+          seconds -= min * 60;
+        }
+        sec = Math.round(seconds);
+       
+        hours = hours > 9 ? hours : `0${hours}`;
+        min = min > 9 ? min : `0${min}`;
+        sec = sec > 9 ? sec : `0${sec}`;
+        return  `${days > 0 ? days+'天 ': ''}${hours}:${min}:${sec}`
+      }
     }
   }
 </script>
@@ -48,7 +97,7 @@
 .tag-replay {
   background-image: linear-gradient(#9c9c9c, #9c9c9c);
 }
-.tag-will {
+.tag-willPlay {
   background-image: linear-gradient(#19b45e, #009b46);
 }
 .tag-txt-box {
