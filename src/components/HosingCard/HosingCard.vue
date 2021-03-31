@@ -143,11 +143,11 @@ export default {
         //全路径的时候
         if (/\.gif$/.test(url)) {
           return (
-            "https://img11.360buyimg.com/esf/" + url.split("/jfs/")[1] + whnow
+            "https://[CDN地址]/esf/" + url.split("/jfs/")[1] + whnow
           );
         } else {
           return (
-            "https://img11.360buyimg.com/" +
+            "https://[CDN地址]/" +
             nx +
             "/s" +
             size +
@@ -162,10 +162,10 @@ export default {
       } else if (/^jfs\//.test(url)) {
         //jfs开头的路径的时候
         if (/\.gif$/.test(url)) {
-          return "https://img11.360buyimg.com/esf/" + url + whnow;
+          return "https://[CDN地址]/esf/" + url + whnow;
         } else {
           return (
-            "https://img11.360buyimg.com/" +
+            "https://[CDN地址]/" +
             nx +
             "/s" +
             size +
