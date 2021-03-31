@@ -19,7 +19,7 @@ storiesOf("基础组件|Steps", module)
 			methods:{
 				onStepClick(step, index){
 					this.activeIndex = index
-					console.log(step, index)
+					alert(`current step:${step}, step index: ${index}`)
 				}
 			}
 		}
