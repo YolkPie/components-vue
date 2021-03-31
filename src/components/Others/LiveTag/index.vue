@@ -1,13 +1,13 @@
 <template>
-  <div class="tag-container">
-    <span :class="'tag-txt-box tag-' + curLiveData.code">
-      <span class="tag-txt">{{curLiveData.label}}</span>
+  <div class="yp-livetag">
+    <span :class="'yp-livetag__statusbox yp-livetag__statusbox--' + curLiveData.code">
+      <span class="yp-livetag__status">{{curLiveData.label}}</span>
     </span>
     <template v-if="timeCounter">
-      <span class="tag-sub">{{timeCounter}}</span>
+      <span class="yp-livetag__mark">{{timeCounter}}</span>
     </template>
     <template v-else-if="curLiveData.viewNum">
-      <span class="tag-sub">{{curLiveData.viewNum}}人</span>
+      <span class="yp-livetag__mark">{{curLiveData.viewNum}}人</span>
     </template>
   </div>
 </template>
@@ -79,7 +79,7 @@
   }
 </script>
 <style lang="scss" scoped>
-.tag-container {
+.yp-livetag {
   border-radius: 6px;
   height: 40px;
   overflow: hidden;
@@ -88,19 +88,19 @@
   align-items: center;
   margin-top: 20px;
 }
-.tag-preplay {
+.yp-livetag__statusbox--preplay {
   background-image: linear-gradient(#19b45e, #009b46);
 }
-.tag-playing {
+.yp-livetag__statusbox--playing {
   background-image: linear-gradient(#f2140c, #f2270c, #f24d0c);
 }
-.tag-replay {
+.yp-livetag__statusbox--replay {
   background-image: linear-gradient(#9c9c9c, #9c9c9c);
 }
-.tag-willPlay {
+.yp-livetag__statusbox--willPlay {
   background-image: linear-gradient(#19b45e, #009b46);
 }
-.tag-txt-box {
+.yp-livetag__statusbox {
   padding-right: 10px;
   padding-left: 10px;
   border-radius: 6px;
@@ -109,7 +109,7 @@
   align-items: center;
   z-index: 1;
 }
-.tag-txt {
+.yp-livetag__status {
   margin: 0px;
   padding: 0px;
   color: #fff;
@@ -119,7 +119,7 @@
   display: inline-block;
 }
 
-.tag-sub {
+.yp-livetag__mark {
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
   border-radius: 6px;

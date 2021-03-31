@@ -1,18 +1,18 @@
 <template>
-  <div class="yk-step" v-if="steps && steps.length">
-    <div class="step-list-item" 
+  <div class="yp-step" v-if="steps && steps.length">
+    <div class="yp-step__item" 
       v-for="(step,index) in steps" 
       :key="index" 
-      :class="{'is-active':index <= activeIndex}"
+      :class="{'yp-step__item--active':index <= activeIndex}"
       @click="onStepClick(step, index)">
-      <span class="item-text-icon">
+      <span class="yp-step__icon">
         {{index + 1}}
       </span>
-      <span class="item-text-content">
+      <span class="yp-step__content">
         {{step}}
       </span>
-      <span class="item-text-direction" v-if="index < steps.length-1">
-        <i class="icon-arrow-right"></i>
+      <span class="yp-step__split" v-if="index < steps.length-1">
+        <i class="yp-step__split-icon"></i>
       </span>
     </div>
   </div>
@@ -52,13 +52,13 @@
   }
 </script>
 <style lang="scss" scoped>
-  .yk-step {
+  .yp-step {
     padding: 20px;
     padding-right: 0;
     height: 32px;
     line-height: 1.2;
     display: flex;
-    .step-list-item {
+    .yp-step__item {
       flex:1;
       font-family: PingFangSC-Regular;
       font-size: 28px;
@@ -66,7 +66,7 @@
       float: left;
       letter-spacing: 0;
       color: #9CA7B6;
-      .item-text-icon {
+      .yp-step__icon {
         display: inline-block;
         width: 32px;
         height: 32px;
@@ -75,22 +75,22 @@
         background-color: #9CA7B6;
         border-radius: 100%;
       }
-      & > .item-text-direction {
+      & .yp-step__split {
         margin-left: 20px;
       }
-      & > .item-text-direction  .icon-arrow-right {
+      & .yp-step__split-icon {
         font-weight: 600;
         line-height: 1.3;
         &:before{content: ">";}
       }
     }
-    .is-active {
+    .yp-step__item--active {
       color: #3399FF;
-      & > .item-text-icon {
+      & > .yp-step__icon {
         background-color: #3399FF;
         
       }
-      & > .item-text-direction .icon-arrow-right {
+      &  .yp-step__split-icon {
         color: #3399FF;
         
       }
