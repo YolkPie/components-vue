@@ -9,7 +9,7 @@ import {
 import HorizontalScorll from '../src/components/HorizontalScorll/HorizontalScorll.vue'
 import HorizontalScorllSlot from '../src/components/HorizontalScorll/HorizontalScorllSlot.vue'
 import HosingCard from '../src/components/HosingCard/HosingCard.vue'
-import Draw from '../src/components/Draw/Draw.vue'
+// import Draw from '../src/components/Draw/Draw.vue'
 
 storiesOf('House', module)
   .addDecorator(withKnobs)
@@ -104,22 +104,22 @@ storiesOf('House', module)
       }
     }
   })
-  .add('Draw', () => {
-    return {
-      components: {
-        Draw
-      },
-      template: `<Draw :styleMessage="styleMessage"  />`,
-      data() {
-        return {
-          styleMessage: {
-            height: '200',
-            width: '400'
-          }
-        }
-      },
-      methods: {
+  // .add('Draw', () => {
+  //   return {
+  //     components: {
+  //       Draw
+  //     },
+  //     template: `<Draw :styleMessage="styleMessage"  />`,
+  //     data() {
+  //       return {
+  //         styleMessage: {
+  //           height: '200',
+  //           width: '400'
+  //         }
+  //       }
+  //     },
+  //     methods: {
         
-      }
-    }
-  })
+  //     }
+  //   }
+  // })

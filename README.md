@@ -11,7 +11,9 @@
 
 > git remote add github https://github.com/YolkPie/components-vue.git
 
-当<b>master分支更新</b>之后，在执行了`git push`将代码推送到git.xxx.com（内部git组件库）之后，再执行`git push github`将更新同步给github，接下来travis会自动构建预览页。
+当<b>master分支更新</b>之后，在执行了`git push`将代码推送到git.xxx.com（内部git组件库）之后，再执行`git pull github master` 最后执行 `git push github`将更新同步给github，接下来travis会自动构建预览页。
+
+
 
 > 预览页地址：https://yolkpie.github.io/components-vue/
 
