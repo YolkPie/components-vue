@@ -1,9 +1,9 @@
 <template>
   <div class="select-box"
-       :class="{
+       :class="[{
   	      'selected': selected,
   	      'disabled': disabled,
-       }"
+       }, outClassName]"
        @click="clickSelectBox"
   >
     <slot></slot>
@@ -14,6 +14,10 @@
 	export default {
 		name: 'yolkSelectBox',
     props: {
+			outClassName: {
+				type: String,
+				default: ''
+			},
 			disabled: { // 是否禁用
 				type: Boolean,
         default: false

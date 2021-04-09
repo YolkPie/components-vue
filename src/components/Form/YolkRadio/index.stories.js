@@ -17,7 +17,7 @@ storiesOf("基础组件|form 表单", module)
 				};
 			},
 			template: `<div style="padding: 20px">
-        <YolkRadio :radioInfo="radioInfo" :isChecked="true"></YolkRadio>
+        <YolkRadio :radioInfo="radioInfo" :isChecked="true" ></YolkRadio>
 			</div>`,
 		}
 	})

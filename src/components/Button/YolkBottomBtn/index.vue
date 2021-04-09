@@ -1,23 +1,27 @@
 <template>
-  <div :class="{'bottom-fit': bottomFit}">
-    <div class="bottom-btn">
-      <div class="bottom-btn--content" @click="clickBtn">
+  <div class="bottom-btn" :class="outClassName">
+    <div class="bottom-btn__wrap">
+      <div class="bottom-btn__content" @click="clickBtn">
         <slot></slot>
       </div>
     </div>
-    <div class="bottom-btn--blank-block"></div>
+    <div class="bottom-btn__blank-block" v-if="bottomFit"></div>
   </div>
-
 </template>
 
 <script>
 	export default {
 		name: 'yolkBottomBtn',
     props: {
+			outClassName: {
+				type: String,
+				default: ''
+      },
 			bottomFit: {
 				type: Boolean,
 				default: false
-      }
+      },
+
     },
     methods: {
 			clickBtn() {
@@ -31,13 +35,14 @@
   .bottom-btn {
     position: fixed;
     bottom: 0;
-    padding: 22px 30px;
     width: 100%;
-    height: 128px;
-    background-color: #fff;
-    box-shadow: 0 -4px 8px 0 rgba(245,245,245,1);
-    box-sizing: border-box;
-    &--content {
+    &__wrap {
+      padding: 22px 30px;
+      box-shadow: 0 -4px 8px 0 rgba(245,245,245,1);
+      box-sizing: border-box;
+      background-color: #fff;
+    }
+    &__content {
       width: 100%;
       height: 84px;
       line-height: 84px;
@@ -47,13 +52,10 @@
       border-radius: 8px;
       text-align: center;
     }
-    &--blank-block {
+    &__blank-block {
       width: 100%;
-      height: 128px;
+      height: 34px;
       background-color: #f7f8fa;
     }
-  }
-  .bottom-fit {
-    height: 162px;
   }
 </style>

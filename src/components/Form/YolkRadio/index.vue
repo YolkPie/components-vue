@@ -1,5 +1,5 @@
 <template>
-  <div v-if="radioInfo" class="radio-cell" :class="{'radio-cell--disabled': disabled}" @click="clickRadioItem">
+  <div v-if="radioInfo" class="radio-cell" :class="[{'radio-cell--disabled': disabled}, outClassName]" @click="clickRadioItem">
     <div class="radio-cell__content">
       <div v-if="Array.isArray(radioInfo)" >
         <div
@@ -27,11 +27,16 @@
 	export default {
 		name: 'yolkRadio',
     props: {
+			outClassName: {
+				type: String,
+				default: ''
+			},
 			radioInfo: {
 				type: [String, Array]
       },
 			isChecked: {
-				type: Boolean
+				type: Boolean,
+				default: false
       },
 			disabled: {
 				type: Boolean,

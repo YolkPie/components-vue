@@ -1,9 +1,9 @@
 <template>
-  <div v-if="direction==='vertical'" class="yolk-divider">
+  <div class="yolk-divider" :class="outClassName">
     <template v-if="Array.isArray(content)">
       <template v-for="(item, index) in content">
         <span>{{item}}</span>
-        <div class="yolk-divider__vertical-split yolk-divider__vertical-split--array"></div>
+        <div :class="['yolk-divider__'+direction+'-split', 'yolk-divider__'+direction+'-split--array']"></div>
       </template>
     </template>
     <template v-else>
@@ -18,6 +18,10 @@
 	export default {
 		name: 'yolkDivider',
 		props: {
+			outClassName: {
+				type: String,
+				default: ''
+			},
 			direction: {
 				type: String,
 				default: 'vertical'
@@ -37,9 +41,20 @@
       display: inline-block;
       width: 1px;
       height: 1em;
-      margin: 0 .1rem;
+      margin: 0 10px;
       vertical-align: middle;
       position: relative;
+      background-color: rgba(46,45,45,0.2);
+      &--array {
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+    &__horizontal-split {
+      margin: 10px 0;
+      width: 100%;
+      height: 1px;
       background-color: rgba(46,45,45,0.2);
       &--array {
         &:last-child {
