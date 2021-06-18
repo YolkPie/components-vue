@@ -6,6 +6,10 @@ import {withCssResources} from '@storybook/addon-cssresources'
 import {withA11y} from '@storybook/addon-a11y'
 import {INITIAL_VIEWPORTS} from '@storybook/addon-viewport'
 import { Button } from 'vant'
+import Element from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(Element);
+
 import Vue from 'vue'
 
 Vue.use(Button)
