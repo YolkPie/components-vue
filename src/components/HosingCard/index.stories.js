@@ -13,7 +13,7 @@ storiesOf("业务组件|House", module)
             components: {
               HosingCard
             },
-            template: `<HosingCard @click="handleClick" @click="handleCardClickMd" :cardinfo="cardinfo" />`,
+            template: `<HosingCard @click="handleCardClickMd" :cardinfo="cardinfo" />`,
             data() {
               return {
                 cardinfo: {
